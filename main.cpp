@@ -7,14 +7,15 @@ int main()
 	 int windowWidth = 1024;
 	 int windowHeight = 768;
 	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Dobro Dosli");
-	Ball ball{ 600,350 };
+	Ball ball{ 612,384 };
 	Player palica ("palica.png",sf::Vector2f(16.f,16.f));
+
 	int score = 0;
 	int lives = 3;
-	while (window.isOpen())
+	/*while (window.isOpen())
 	{
 		sf::Event event;
-
+		window.clear(Color::Black);
 		while (window.pollEvent(event))
 		{
 			if(event.type==sf::Event::Closed)
@@ -27,7 +28,19 @@ int main()
 	palica.update ();
 	ball.draw(window);
 	palica.draw(window);
-	
+	*/
+
+	while (true)
+	{
+		window.clear(sf::Color::Black);
+		palica.draw(window);
+		ball.draw(window);
+		ball.update();
+		palica.update();
+		
+		window.display();
+
+	}
 	return 0;
 
 

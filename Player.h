@@ -4,12 +4,12 @@
 #include<iostream>
 //#define windowWidth 1024
 //#define windowHeight 768
-#define TEX "externals\SFML\lib\images\\"
+#define TEX "\images\\"
 class Player
 {
 	int windowWidth=1024;
 	int windowHeight = 768;
-	float mSpeed = 0.3f;
+	float mSpeed = 0.5f;
 	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
 	//funkcije za pozicioniranje(graniènici)

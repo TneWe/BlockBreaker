@@ -9,8 +9,8 @@ Player::Player(std::string texturePath, sf::Vector2f size)
 		std::cout << "Error - No picture";
 	}
 	playerSprite.setTexture(playerTexture);
-	
-
+	playerSprite.setPosition(sf::Vector2f(300,650));
+	playerSprite.setScale(sf::Vector2f(0.45, 0.25));
 }
 
 Player::~Player()

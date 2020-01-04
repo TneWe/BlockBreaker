@@ -7,7 +7,7 @@ private:
 
 	sf::CircleShape ballShape;//lopta
 
-	float ballVelocity = 2.f;//brzina
+	float ballVelocity = 1.f;//brzina
 	float ballRadius = 10.f;//radijus
 	 int windowWidth = 1024;
 	 int windowHeight = 768;
