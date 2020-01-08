@@ -1,9 +1,2 @@
-﻿  Player.cpp
-C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(6,29): warning C4129: 'i': unrecognized character escape sequence
-C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(7,33): warning C4129: 'i': unrecognized character escape sequence
-C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(13,47): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
+﻿  main.cpp
   Block Break.vcxproj -> C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Debug\Block Break.exe

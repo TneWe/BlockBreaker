@@ -5,6 +5,8 @@ Ball::Ball(float startX, float startY)
 	ballShape.setRadius(ballRadius);
 	ballShape.setFillColor(sf::Color::Cyan);
 	ballShape.setOrigin(ballRadius, ballRadius);
+	ballShape.setOutlineThickness(4);
+	ballShape.setOutlineColor(sf::Color::Magenta);
 }
 
 float Ball::x()
@@ -19,30 +21,34 @@ float Ball::y()
 
 float Ball::left()
 {
-	//return x()-ballShape.getRadius();
-	return x() - ballShape.getPosition().x;
+	return x()+ballShape.getRadius();
 }
 
 float Ball::right()
 {
-	//return x()+ ballShape.getRadius();
-	return x() + ballShape.getPosition().x;
+	return x()- ballShape.getRadius();
 
 }
 
 float Ball::up()
 {
-	//return y()-ballShape.getRadius();
-	return y() - ballShape.getPosition().x;
+	return y()-ballShape.getRadius();
 
 }
 
 float Ball::down()
 {
-	//return y()+ballShape.getRadius();
-	return y() + ballShape.getPosition().x;
+	return y() + ballShape.getRadius();
 
 }
+
+sf::Vector2f Ball::getvelocity()
+{
+	return velocity;
+}
+
+
+
 
 void Ball::draw(sf::RenderTarget& window)
 {
@@ -53,21 +59,15 @@ void Ball::draw(sf::RenderTarget& window)
 horizontalni velocity na negativnu vrijednosta da ga vrati ulijevo i vice versa*/
 void Ball::update()
 {	
-	ballShape.move(velocity);
-	if (left() < 0) { velocity.x = ballVelocity; }
 	
-		
-	
-	else if (right() > windowWidth) { velocity.x = -ballVelocity; }
-	
-	
-		
-	if (up() < 0) { velocity.y = ballVelocity; }
-	
-		
-	
-	else if (down() > windowHeight) { velocity.y = -ballVelocity; }
-
-	
-	
+	sf::Vector2f pos = ballShape.getPosition();
+	pos += velocity;
+	ballShape.setPosition(pos);
+	if (left() < 0 || right() > windowWidth)
+		velocity.x *= -1;
+	else if (up() < 0 || down() >windowHeight)
+		velocity.y *= -1;
 }
+
+
+

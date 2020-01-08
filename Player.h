@@ -13,15 +13,17 @@ class Player
 	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
 	//funkcije za pozicioniranje(graniènici)
-	float x();
-	float y();
-	float left();	 
-	float right();	
 public:
 	Player(std::string texturePath,sf::Vector2f size);
 	~Player();
 	void draw(sf::RenderTarget& window);
 	void update(/*sf::Sprite &playerTexture*/);
+	float x();
+	float y();
+	float left();	 
+	float right();	
+	float up();
+	float down();
 
 };
 
