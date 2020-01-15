@@ -5,8 +5,10 @@ Ball::Ball(float startX, float startY)
 	ballShape.setRadius(ballRadius);
 	ballShape.setFillColor(sf::Color::Cyan);
 	ballShape.setOrigin(ballRadius, ballRadius);
-	ballShape.setOutlineThickness(4);
+	ballShape.setOutlineThickness(2);
 	ballShape.setOutlineColor(sf::Color::Magenta);
+	velocity.x = -ballVelocity;
+	velocity.y = -ballVelocity;
 }
 
 float Ball::x()
@@ -21,12 +23,12 @@ float Ball::y()
 
 float Ball::left()
 {
-	return x()+ballShape.getRadius();
+	return x()-ballShape.getRadius();
 }
 
 float Ball::right()
 {
-	return x()- ballShape.getRadius();
+	return x()+ ballShape.getRadius();
 
 }
 
@@ -42,12 +44,6 @@ float Ball::down()
 
 }
 
-sf::Vector2f Ball::getvelocity()
-{
-	return velocity;
-}
-
-
 
 
 void Ball::draw(sf::RenderTarget& window)
@@ -59,7 +55,6 @@ void Ball::draw(sf::RenderTarget& window)
 horizontalni velocity na negativnu vrijednosta da ga vrati ulijevo i vice versa*/
 void Ball::update()
 {	
-	
 	sf::Vector2f pos = ballShape.getPosition();
 	pos += velocity;
 	ballShape.setPosition(pos);

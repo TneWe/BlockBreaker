@@ -47,12 +47,13 @@ float Player::right()
 
 float Player::up()
 {
-	return y()+playerSprite.getPosition().y;
+	return y();
 }
 
 float Player::down()
 {
 	return y()-playerSprite.getPosition().y;
+
 }
 
 
