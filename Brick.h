@@ -7,9 +7,9 @@ private:
 	sf::RectangleShape bricky;
 
 public:
-	const float height{ 20.f };
-	const float	width{ 50.f };
-	Brick();
+	 float height{ 20.f };
+	 float	width{ 50.f };
+	Brick()=default;
 	Brick(float startX, float startY);
 	void draw(sf::RenderWindow& window);
 	float x();
@@ -19,5 +19,5 @@ public:
 	float up();
 	float down();
 	bool destroy;
+	sf::FloatRect getPosition();
 };
-

@@ -4,10 +4,13 @@
 #include"Ball.h"
 #include<vector>
 #include"Brick.h"
+#define spacing 4
+#include<algorithm>
 //#include"Game.h"
+
 bool coll_paddle_ball(Ball& b, Player& p)
 {
-	if (b.right() >= p.left() ||b.left() >= p.right() || b.up() >= p.down() || b.down() >= p.up())
+	if (b.getPosition().intersects(p.getPosition()))
 	{
 		return true;
 	}
@@ -17,17 +20,32 @@ void koli(Ball&b,Player &p)
 {
 	if (coll_paddle_ball(b, p))
 	{
-		b.velocity.x *= 1;
-		b.velocity.y *= 1;
+		b.velocity.y *= -1;
 	}
 }
-
+bool coll_ball_brick(Ball& b, Brick br)
+{
+	if(b.getPosition().intersects(br.getPosition()))
+	{
+		return true;
+	}
+	return false;
+}
+void koli1(Ball& b, Brick& br)
+{
+	if (coll_ball_brick(b, br))
+	{
+		b.velocity.x *= -1;
+		b.velocity.y *= -1;
+		br.destroy = true;
+	}
+}  
 void fillvec(std::vector<Brick>& grid) {
 	Brick b;
 	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 8; j++) {
-			float y = i * (3 + b.height);
-			float x = j * (3 + b.width);
+		for (int j = 0; j < 19; j++) {
+			float y = i * (spacing + b.height);
+			float x = j * (spacing + b.width);
 			grid.emplace_back(Brick(x, y));
 		}
 	}
@@ -42,13 +60,7 @@ int main()
 	//Game game;
 	int score = 0;
 	int lives = 3;
-	/*for (int i = 0; i < 10; i++)
-	{
-		for(int y=0;y<8;y++)
-		{
-			bricks.emplace_back((i + 1) * (60 + 3) + 22, (y + 2) * (20 + 3));
-		}
-	}*/
+	
 	
 	std::vector<Brick> grid;
 	fillvec(grid);
@@ -65,6 +77,9 @@ int main()
 			window.clear(sf::Color::Black);
 			ball.update();
 			palica.update();
+			grid.erase(std::remove_if(begin(grid), end(grid), [](Brick& brick) {return brick.destroy == true; }),end(grid));
+			for (Brick& brick : grid) {
+				koli1(ball, brick);}
 			palica.draw(window);
 			ball.draw(window);
 			for (Brick& brick : grid) {

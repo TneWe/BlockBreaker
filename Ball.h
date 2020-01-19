@@ -1,5 +1,6 @@
 #pragma once
 #include"SFML/Graphics.hpp"
+#include"Brick.h"
 #include"Player.h"
 class Ball
 {
@@ -7,12 +8,13 @@ private:
 
 	sf::CircleShape ballShape;//loptica
 
-	 int windowWidth = 1024;
-	 int windowHeight = 768;
+	int windowWidth = 1024;
+	int windowHeight = 768;
 public:
-	 sf::Vector2f velocity;
-	 float ballVelocity = 0.5f;//brzina
+	sf::Vector2f velocity;
+	float ballVelocity = 0.5f;//brzina
 	const float ballRadius = 10.f;//radijus
+	Ball() = default;
 	Ball(float startX, float startY);//konstruktor inicijalizira loptu na ekran
 	void draw(sf::RenderTarget& window);
 	void update();
@@ -22,5 +24,7 @@ public:
 	float right();	//funkcije za pozicioniranje
 	float up();		//funkcije za pozicioniranje
 	float down();	//funkcije za pozicioniranje
+	sf::Time time;
+	sf::FloatRect getPosition();
+	
 };
-

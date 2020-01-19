@@ -1,3 +1,2 @@
 ﻿  main.cpp
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Brick::Brick(void)" (??0Brick@@QAE@XZ) referenced in function "void __cdecl fillvec(class std::vector<class Brick,class std::allocator<class Brick> > &)" (?fillvec@@YAXAAV?$vector@VBrick@@V?$allocator@VBrick@@@std@@@std@@@Z)
-C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Debug\Block Break.exe : fatal error LNK1120: 1 unresolved externals
+  Block Break.vcxproj -> C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Debug\Block Break.exe

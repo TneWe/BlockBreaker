@@ -9,10 +9,10 @@ class Player
 	int windowHeight = 768;
 	float mSpeed = 0.5f;
 	sf::Texture playerTexture;
-	sf::Sprite playerSprite;
 public:
+	sf::Sprite playerSprite;
 	Player(std::string texturePath,sf::Vector2f size);
-	~Player();
+	~Player()=default;
 	void draw(sf::RenderTarget& window);
 	void update();
 	//funkcije za pozicioniranje(graniènici)
@@ -22,6 +22,6 @@ public:
 	float right();	
 	float up();
 	float down();
-
+	sf::FloatRect getPosition();
 };
 

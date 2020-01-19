@@ -4,13 +4,14 @@ Brick::Brick(float startX, float startY)
 {
 	bricky.setPosition(startX, startY);
 	bricky.setFillColor(sf::Color::White);
+	bricky.setOutlineColor(sf::Color::Green);
 	bricky.setSize(sf::Vector2f(width, height));
 	destroy == false;
 }
 
-void Brick::draw(sf::RenderWindow &window)
+void Brick::draw(sf::RenderWindow& window)
 {
-		window.draw(bricky);
+	window.draw(bricky);
 }
 
 float Brick::x()
@@ -25,12 +26,12 @@ float Brick::y()
 
 float Brick::left()
 {
-	return x()-3;
+	return x() - 3;
 }
 
 float Brick::right()
 {
-	return bricky.getPosition().x+ bricky.getSize().x +3;
+	return bricky.getPosition().x + bricky.getSize().x;
 }
 
 float Brick::up()
@@ -40,7 +41,10 @@ float Brick::up()
 
 float Brick::down()
 {
-	return y()+ bricky.getSize().y;
+	return y() + bricky.getSize().y;
 }
 
-
+sf::FloatRect Brick::getPosition()
+{
+	return bricky.getGlobalBounds();
+}

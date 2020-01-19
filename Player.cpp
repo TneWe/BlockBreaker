@@ -13,10 +13,7 @@ Player::Player(std::string texturePath, sf::Vector2f size)
 	playerSprite.setScale(sf::Vector2f(0.4, 0.25));
 }
 
-Player::~Player()
-{
-	
-}
+
 
 void Player::draw(sf::RenderTarget& window)
 {
@@ -35,26 +32,33 @@ float Player::y()
 
 float Player::left()
 {
-	return x()-playerSprite.getPosition().y;
+	return x();// -playerSprite.getGlobalBounds().width;
 }
 
 
 float Player::right()
 {
 	
-		return x() + playerSprite.getPosition().x;
+	return x() + playerSprite.getGlobalBounds().width;
 }
 
 float Player::up()
 {
-	return y();
+	return y();// -playerSprite.getGlobalBounds().height;
 }
 
 float Player::down()
 {
-	return y()-playerSprite.getPosition().y;
+	return y()+playerSprite.getGlobalBounds().height;
 
 }
+
+sf::FloatRect Player::getPosition()
+{
+	return playerSprite.getGlobalBounds();
+}
+
+
 
 
 
@@ -80,5 +84,6 @@ void Player::update()
 	{
 		playerSprite.setPosition(windowWidth-playerSprite.getGlobalBounds().width, playerSprite.getPosition().y);
 	}
+
 
 }
