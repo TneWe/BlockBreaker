@@ -1,6 +1,18 @@
 #include "Player.h"
 
 
+Player::Player()
+{
+	playerTexture.loadFromFile(TEX "palica.png");
+	if (!playerTexture.loadFromFile(TEX "palica.png"))
+	{
+		std::cout << "Error - No picture";
+	}
+	playerSprite.setTexture(playerTexture);
+	playerSprite.setPosition(sf::Vector2f(300, 650));
+	playerSprite.setScale(sf::Vector2f(0.4 , 0.25 ));
+}
+
 Player::Player(std::string texturePath, sf::Vector2f size)
 {
 	playerTexture.loadFromFile(TEX "palica.png");
@@ -15,7 +27,7 @@ Player::Player(std::string texturePath, sf::Vector2f size)
 
 
 
-void Player::draw(sf::RenderTarget& window)
+void Player::draw(sf::RenderWindow& window)
 {
 	window.draw(playerSprite);
 }
@@ -32,7 +44,7 @@ float Player::y()
 
 float Player::left()
 {
-	return x();// -playerSprite.getGlobalBounds().width;
+	return x()-playerSprite.getGlobalBounds().width;
 }
 
 
@@ -44,7 +56,7 @@ float Player::right()
 
 float Player::up()
 {
-	return y();// -playerSprite.getGlobalBounds().height;
+	return y()-playerSprite.getGlobalBounds().height;
 }
 
 float Player::down()
@@ -57,6 +69,7 @@ sf::FloatRect Player::getPosition()
 {
 	return playerSprite.getGlobalBounds();
 }
+
 
 
 
@@ -85,5 +98,6 @@ void Player::update()
 		playerSprite.setPosition(windowWidth-playerSprite.getGlobalBounds().width, playerSprite.getPosition().y);
 	}
 
-
+	
+	
 }

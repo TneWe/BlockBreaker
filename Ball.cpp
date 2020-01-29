@@ -1,5 +1,5 @@
 #include "Ball.h"
-Ball::Ball(float startX, float startY)
+Ball::Ball()
 {
 	ballShape.setPosition(startX, startY);
 	ballShape.setRadius(ballRadius);
@@ -49,10 +49,29 @@ sf::FloatRect Ball::getPosition()
 	return ballShape.getGlobalBounds();
 }
 
+sf::CircleShape Ball::getShape()
+{
+	return ballShape;
+}
+
+void Ball::paddleCollisionVelocity()
+{
+	velocity.y *= -1;
+}
+
+void Ball::brickCollisionVelocity()
+{
+	velocity.x *= -1;
+	velocity.y *= -1;
+}
 
 
 
-void Ball::draw(sf::RenderTarget& window)
+
+
+
+
+void Ball::draw(sf::RenderWindow& window)
 {
 	window.draw(ballShape);
 }
@@ -70,5 +89,4 @@ void Ball::update()
 		velocity.y *= -1;
 	
 	
-
 }

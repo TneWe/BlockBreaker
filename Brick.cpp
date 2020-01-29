@@ -1,12 +1,14 @@
 #include "Brick.h"
 
+
+
 Brick::Brick(float startX, float startY)
 {
 	bricky.setPosition(startX, startY);
-	bricky.setFillColor(sf::Color::White);
+	bricky.setFillColor(sf::Color::Green);
 	bricky.setOutlineColor(sf::Color::Green);
-	bricky.setSize(sf::Vector2f(width, height));
-	destroy == false;
+	bricky.setSize(sf::Vector2f(brickWidth, brickHeight));
+	destroy = false;
 }
 
 void Brick::draw(sf::RenderWindow& window)
@@ -14,37 +16,12 @@ void Brick::draw(sf::RenderWindow& window)
 	window.draw(bricky);
 }
 
-float Brick::x()
-{
-	return bricky.getPosition().x;
-}
 
-float Brick::y()
-{
-	return	bricky.getPosition().y;
-}
 
-float Brick::left()
-{
-	return x() - 3;
-}
-
-float Brick::right()
-{
-	return bricky.getPosition().x + bricky.getSize().x;
-}
-
-float Brick::up()
-{
-	return y();
-}
-
-float Brick::down()
-{
-	return y() + bricky.getSize().y;
-}
 
 sf::FloatRect Brick::getPosition()
 {
 	return bricky.getGlobalBounds();
 }
+
+

@@ -1,23 +1,18 @@
 #pragma once
 #include"SFML/Graphics.hpp"
 #include<vector>
+#include"GameObject.h"
 class Brick
 {
 private:
 	sf::RectangleShape bricky;
 
 public:
-	 float height{ 20.f };
-	 float	width{ 50.f };
+	int score{ 0 };
 	Brick()=default;
 	Brick(float startX, float startY);
-	void draw(sf::RenderWindow& window);
-	float x();
-	float y();
-	float left();
-	float right();
-	float up();
-	float down();
+	virtual ~Brick()=default;
+	void draw(sf::RenderWindow& window) ;
 	bool destroy;
 	sf::FloatRect getPosition();
 };

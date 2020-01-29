@@ -1,2 +1,25 @@
-﻿  main.cpp
+﻿  Ball.cpp
+  Brick.cpp
+  Game.cpp
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(6,48): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(6,35): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(9,7): warning C4930: 'Ball b(void)': prototyped function not called (was a variable definition intended?)
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(8,9): warning C4930: 'Player player(void)': prototyped function not called (was a variable definition intended?)
+  main.cpp
+  Player.cpp
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(6,29): warning C4129: 'i': unrecognized character escape sequence
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(7,34): warning C4129: 'i': unrecognized character escape sequence
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(13,48): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(18,29): warning C4129: 'i': unrecognized character escape sequence
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(19,33): warning C4129: 'i': unrecognized character escape sequence
+C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(25,46): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   Block Break.vcxproj -> C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Debug\Block Break.exe

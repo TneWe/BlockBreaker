@@ -3,18 +3,21 @@
 #include<string>
 #include<iostream>
 #define TEX "\images\\"
+#include"GameObject.h"
+
 class Player
 {
-	int windowWidth=1024;
-	int windowHeight = 768;
+
 	float mSpeed = 0.5f;
 	sf::Texture playerTexture;
 public:
+
 	sf::Sprite playerSprite;
+	Player();
 	Player(std::string texturePath,sf::Vector2f size);
 	~Player()=default;
-	void draw(sf::RenderTarget& window);
-	void update();
+	void draw(sf::RenderWindow& window) ;
+	void update() ;
 	//funkcije za pozicioniranje(graniènici)
 	float x();
 	float y();
@@ -23,5 +26,6 @@ public:
 	float up();
 	float down();
 	sf::FloatRect getPosition();
+	
 };
 
