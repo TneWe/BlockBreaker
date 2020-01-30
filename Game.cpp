@@ -5,20 +5,24 @@
 
 Game::Game():window(sf::VideoMode(windowWidth, windowHeight), "Dobro Dosli")
 {
-	Player player();
-	Ball b();
-	Brick brick(0,0);
+	
 }
 
 void Game::run()
 {
 	sf::Clock clock;
+	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (window.isOpen())
 	{
-		sf::Time deltaTime = clock.restart();
 		procesEvent();
-		update(deltaTime);
-		draw();
+		timeSinceLastUpdate += clock.restart();
+		while (timeSinceLastUpdate > (sf::seconds(1.f / 60.f)))
+		{
+			timeSinceLastUpdate -= (sf::seconds(1.f / 60.f));
+			procesEvent();
+			update(sf::seconds(1.f / 60.f));
+		draw(window);
+		}	
 	}
 }
 
@@ -36,14 +40,29 @@ void Game::procesEvent()
 
 void Game::update(sf::Time deltaTime)
 {
-	createBall();
+
+	window.clear(sf::Color::Black);
+
+	//createBall();
 	createBrick();
 	player.update();	
-	std::for_each(balls.begin(), balls.end(), [&](Ball ball) {ball.update(); });
-
-	for (auto i : balls)
+	//std::for_each(balls.begin(), balls.end(), [&](Ball ball) {ball.update(); });
+	ball.update();
+	if (collision(ball.getPosition(), player.getPosition()))
 	{
-		sf::FloatRect ballbounds{ i.getPosition() };
+		ball.paddleCollisionVelocity();
+	}
+	for (auto it : bricks)
+	{
+		if (collision(ball.getPosition(), it.getPosition()))
+		{
+			updateBrick();
+			ball.brickCollisionVelocity();
+		}
+
+	}
+
+		/*sf::FloatRect ballbounds{ i.getPosition() };
 		for (auto it : bricks)
 		{
 
@@ -56,25 +75,29 @@ void Game::update(sf::Time deltaTime)
 		if (collision(player.getPosition(), ballbounds))
 		{
 			i.paddleCollisionVelocity();
-		}
-	}
+		}*/
+	
 }
 
-void Game::draw()
+void Game::draw(sf::RenderWindow &window)
 {
 	window.clear(sf::Color::Black);
 	for (Brick& brick : bricks) {
 		brick.draw(window);
 	}	
-	std::for_each(balls.begin(), balls.end(), [&](Ball ball) {ball.draw(window); });
+	//std::for_each(balls.begin(), balls.end(), [&](Ball ball) {ball.draw(window); });
 	player.draw(window);
-
+	ball.draw(window);
 	window.display();
 }
 
 bool Game::collision(sf::FloatRect f, sf::FloatRect s)
 {
-	return f.intersects(s);
+	if (f.intersects(s))
+	{
+		return true;
+	}
+	return false;
 }
 
 void Game::createBrick()
@@ -96,13 +119,9 @@ void Game::updateBrick()
 
 }
 
-void Game::createBall()
-{
-	for (int i = 0; i <= 3; i++)
-		balls.emplace_back(Ball());
-}
 
-void Game::checklive()
+
+/*void Game::checklive()
 {
 	balls.erase(std::remove_if(balls.begin(), balls.end(),[&](Ball ball)
 
@@ -117,6 +136,6 @@ void Game::checklive()
 		}
 
 	), balls.end());
-}
+}*/
 
 

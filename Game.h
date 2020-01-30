@@ -13,20 +13,20 @@ public:
 	void run();
 	void procesEvent();
 	void update(sf::Time deltaTime);
-	void draw();
+	void draw(sf::RenderWindow &window);
 	bool collision(sf::FloatRect f,sf::FloatRect s);
 	void createBrick();
 	void updateBrick();
-	void createBall();
-	void checklive();
+	
 private:
 	sf::RenderWindow window;
 	int lives{ 3 };
+	sf::Font font;
 	sf::Text livetext;
 	Player player;
-	std::vector<Ball> balls;
+	Ball ball;
 	std::vector<Brick> bricks;
-
+	sf::Clock clock;
 };
 
 

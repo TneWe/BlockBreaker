@@ -49,10 +49,7 @@ sf::FloatRect Ball::getPosition()
 	return ballShape.getGlobalBounds();
 }
 
-sf::CircleShape Ball::getShape()
-{
-	return ballShape;
-}
+
 
 void Ball::paddleCollisionVelocity()
 {

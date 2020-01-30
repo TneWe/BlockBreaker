@@ -1,10 +1,7 @@
 ﻿  Ball.cpp
-  Brick.cpp
   Game.cpp
 C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(6,48): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
 C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(6,35): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(9,7): warning C4930: 'Ball b(void)': prototyped function not called (was a variable definition intended?)
-C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Game.cpp(8,9): warning C4930: 'Player player(void)': prototyped function not called (was a variable definition intended?)
   main.cpp
   Player.cpp
 C:\Users\Admin\Desktop\c++\dev\BlockBreaker\Player.cpp(6,29): warning C4129: 'i': unrecognized character escape sequence
